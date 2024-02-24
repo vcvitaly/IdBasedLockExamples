@@ -1,7 +1,9 @@
 package io.github.vcvitaly;
 
 import io.github.vcvitaly.locker.ConcurrentHashMapLocker;
+import io.github.vcvitaly.locker.GuavaCacheLocker;
 import io.github.vcvitaly.locker.SimpleHashMapLocker;
+import io.github.vcvitaly.locker.StripedLocker;
 import io.github.vcvitaly.locker.SynchronizedHashMapLocker;
 import org.junit.jupiter.api.Test;
 
@@ -26,5 +28,15 @@ class AppTest {
     @Test
     void concurrentHashMapLockerTest() {
         new App().run(new ConcurrentHashMapLocker<Integer>());
+    }
+
+    @Test
+    void guavaCacheLockerTest() {
+        new App().run(new GuavaCacheLocker<Integer>());
+    }
+
+    @Test
+    void stripedLockerTest() {
+        new App().run(new StripedLocker<Integer>());
     }
 }
